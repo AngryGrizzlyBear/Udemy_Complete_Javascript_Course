@@ -5,17 +5,16 @@
 // >= greater than or equal to
 // <= less than or equal to
 
-let temp = 89;
+let temp = 110;
 
 if (temp <=32) {
     console.log('It is freezing outside!')
-} else {
-    if(temp >= 110) {
+} else if (temp >= 110) {
         console.log('It is not freezing....It is waay too hot outside!')
     } else {
         console.log("It's not so bad!")
     }
-}
+
 
 // Challenge
 
