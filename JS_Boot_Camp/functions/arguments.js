@@ -18,18 +18,23 @@ console.log(scoreText);
 // Challenge area
 // total, tipPercent, .1 .2 .3 (100 x .1 .2 or .5)
 
-let getTip = function (total, tipPercent= .2) {
-   return total * tipPercent
+let getTip = function (total, tipPercent= .2)  {
+    let percent = tipPercent * 100;
+    let tip = total * tipPercent;
+    return `A ${percent}% tip on $${total} would be $${tip}.`
 };
 
-total = getTip(412.22,);
-total2 = getTip(23.42, .1);
-total3 = getTip(70.23, .3);
+total = getTip(412,);
+total2 = getTip(25, .1);
+total3 = getTip(70, .3);
 total4 = getTip(100);
 console.log(total);
 console.log(total2);
 console.log(total3);
 console.log(total4);
+
+// Challenge area
+// A 25% tip on $40 would be $10
 
 let name = 'Vikram';
 let age = 24;
