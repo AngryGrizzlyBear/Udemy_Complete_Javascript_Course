@@ -14,4 +14,11 @@ todo.splice(2, 1);
 todo.splice(4, 0, 'Say Hi to co-workers');
 // Shift also gets rid of the first one. Splice or shift works.
 todo.splice(0, 1);
-console.log(todo);
+
+//1. The first item
+//2. The second item
+todo.forEach( function (item, index) {
+    const num = index + 1;
+    console.log(`${num}. ${item}`)
+});
+
