@@ -22,3 +22,11 @@ todo.forEach( function (item, index) {
     console.log(`${num}. ${item}`)
 });
 
+// 1. Order cat food
+// 2. Clean kitchen.
+// ....
+
+for (let count = 0; count < todo.length; count++) {
+    const num = count + 1;
+    console.log(`${num}. ${todo[count]}`)
+};
