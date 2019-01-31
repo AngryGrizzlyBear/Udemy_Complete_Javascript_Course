@@ -9,6 +9,18 @@ const notestwo = [ {
     body: 'Get a new seat'
 }];
 
+const sortNotes = function (notes){
+  notes.sort(function (a, b) {
+      if (a.title.toLowerCase() < b.title.toLowerCase()) {
+          return -1
+      } else if (b.title.toLowerCase() < a.title.toLowerCase()) {
+          return 1
+      } else {
+          return 0
+      }
+  });
+};
+
 const findNote = function (notes, noteTitle) {
     return notes.find(function (note, index) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
@@ -27,8 +39,9 @@ const findNotes = function (notes, query) {
     });
 };
 
-
-console.log(findNotes(notestwo, 'work'));
+sortNotes(notestwo);
+console.log(notestwo);
+// console.log(findNotes(notestwo, 'work'));
 
 // const findNote = function (notes, noteTitle) {
 //     const index = notes.findIndex(function (note, index) {
@@ -37,8 +50,8 @@ console.log(findNotes(notestwo, 'work'));
 //     return notes[index]
 // };
 
-const note = findNote(notestwo, 'Office modification');
-console.log(note);
+//const note = findNote(notestwo, 'Office modification');
+// console.log(note);
 
 // console.log(notestwo.length);
 // console.log(notestwo);

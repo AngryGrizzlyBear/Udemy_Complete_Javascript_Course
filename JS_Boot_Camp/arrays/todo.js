@@ -70,4 +70,18 @@ const getThingsToDo = function(todos) {
     })
 };
 
-console.log(getThingsToDo(todo));
+const sortTodos = function (todo){
+    todo.sort(function (a, b) {
+        if (a.completed === false && b.completed === true) { // alternative !a.completed && b.completed
+            return -1
+        } else if (b.completed === false && a.completed === true) { // alternative !b.completed && b.completed
+            return 1
+        } else {
+            return 0
+        }
+    })
+};
+
+// console.log(getThingsToDo(todo));
+sortTodos(todo);
+console.log(todo);
