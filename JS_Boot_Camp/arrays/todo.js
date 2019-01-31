@@ -36,7 +36,7 @@
 // 1. Create a function to remove a todo by text value.
 const todo = [{
     text: 'Walk the Dog',
-    completed: true
+    completed: false,
 }, {
     text: 'Buy food',
     completed: false
@@ -61,5 +61,13 @@ const deleteToDo = function (todos, todoText) {
     }
 };
 
-deleteToDo(todo, 'Walk the Dog');
-console.log(todo);
+// deleteToDo(todo, 'Walk the Dog');
+// console.log(todo);
+
+const getThingsToDo = function(todos) {
+    return todos.filter(function (todo, index) {
+        return !todo.completed // === false
+    })
+};
+
+console.log(getThingsToDo(todo));
