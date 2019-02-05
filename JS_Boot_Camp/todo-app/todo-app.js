@@ -36,6 +36,11 @@ document.querySelector('#add-todo').addEventListener('click', function (e) {
     console.log('The button was clicked!')
 });
 
+// Listen for to-do text change
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    console.log(e.target.value)
+});
+
 
 
 // Challenge Area
