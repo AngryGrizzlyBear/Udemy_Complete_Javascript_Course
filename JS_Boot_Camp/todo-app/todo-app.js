@@ -32,7 +32,7 @@ todos.forEach(function (todo) {
 
 // Listen for new todos creation
 
-document.querySelector('button').addEventListener('click', function (e) {
+document.querySelector('#add-todo').addEventListener('click', function (e) {
     console.log('The button was clicked!')
 });
 
