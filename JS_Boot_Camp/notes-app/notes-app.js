@@ -19,7 +19,7 @@ const renderNotes = function (notes, filters) {
         return note.title.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
     });
 
-    document.querySelector('#notes').innerHTML = ''
+    document.querySelector('#notes').innerHTML = '';
 
     filteredNotes.forEach(function (note) {
         const noteEl = document.createElement('p');
