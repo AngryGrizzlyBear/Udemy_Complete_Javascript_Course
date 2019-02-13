@@ -1,38 +1,17 @@
 // DOM-Document Object Model
-const notes = [ {
-    title: 'My next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habits to work on',
-    body: 'Exercise. Eating a bit better'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}];
 
+let notes = [];
 const filters = {
   searchText: ''
 };
 
-// const user = {
-//   name: 'Andrew',
-//   age: 27
-// };
-//
-// const userJSON = JSON.stringify(user);
-// console.log(userJSON);
-// localStorage.setItem('user', userJSON);
+const notesJSON = localStorage.getItem('notes');
 
-const userJSON = localStorage.getItem('user');
-const user = JSON.parse(userJSON);
-console.log(`${user.name} is ${user.age}`); // Local storage.
 
-// localStorage.setItem('location', 'Philadelphia')
-// console.log(localStorage.getItem('location'));
-
-// localStorage.removeItem('location');
-
-// localStorage.clear();
+if (notesJSON !== null) {
+    notes = JSON.parse(notesJSON)
+}
+// check for existing saved data.
 
 const renderNotes = function (notes, filters) {
     const filteredNotes = notes.filter(function (note) {
@@ -43,7 +22,13 @@ const renderNotes = function (notes, filters) {
 
     filteredNotes.forEach(function (note) {
         const noteEl = document.createElement('p');
-        noteEl.textContent = note.title;
+
+        if (note.title.length > 0) {
+            noteEl.textContent = note.title;
+        } else {
+            noteEl.textContent = 'Unnamed note'
+        }
+
         document.querySelector('#notes').appendChild(noteEl)
     })
 };
@@ -51,7 +36,13 @@ const renderNotes = function (notes, filters) {
 renderNotes(notes, filters);
 
 document.querySelector('#create-note').addEventListener('click', function (e) {
-    e.target.textContent = 'The button was clicked.'
+    notes.push({
+        title: '',
+        body: '',
+    });
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes, filters)
+    //e.target.textContent = 'The button was clicked.'
 });
 
 // document.querySelector('#remove-all').addEventListener('click', function () {
@@ -68,6 +59,45 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 document.querySelector('#filter-by').addEventListener('change', function (e) {
     console.log(e.target.value)
 });
+
+
+
+
+
+// const notes = [ {
+//     title: 'My next trip',
+//     body: 'I would like to go to Spain'
+// }, {
+//     title: 'Habits to work on',
+//     body: 'Exercise. Eating a bit better'
+// }, {
+//     title: 'Office modification',
+//     body: 'Get a new seat'
+// }];
+//
+// const filters = {
+//   searchText: ''
+// };
+
+// const user = {
+//   name: 'Andrew',
+//   age: 27
+// };
+//
+// const userJSON = JSON.stringify(user);
+// console.log(userJSON);
+// localStorage.setItem('user', userJSON);
+
+// const userJSON = localStorage.getItem('user');
+// const user = JSON.parse(userJSON);
+// console.log(`${user.name} is ${user.age}`); // Local storage.
+
+// localStorage.setItem('location', 'Philadelphia')
+// console.log(localStorage.getItem('location'));
+
+// localStorage.removeItem('location');
+
+// localStorage.clear();
 // document.querySelector('#for-fun').addEventListener('change', function (e) {
 //    console.log(e.target.checked)
 // });

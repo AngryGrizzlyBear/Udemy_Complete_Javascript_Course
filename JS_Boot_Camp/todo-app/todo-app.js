@@ -1,24 +1,15 @@
-const todos = [{
-    text: 'Walk the Dog',
-    completed: false,
-}, {
-    text: 'Buy food',
-    completed: false
-}, {
-    text: 'Watch TV',
-    completed: true,
-}, {
-    text: 'Hug Wife',
-    completed: true,
-}, {
-    text: 'Call Dad',
-    completed: true,
-}];
+let todos = [];
 
 const filters = {
     searchText: '',
     hideCompleted: false
 };
+
+const todosJSON = localStorage.getItem('todos');
+
+if (todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
+}
 
 const renderTodos = function (todos, filters) {
     let filteredTodos = todos.filter(function (todo) {
@@ -82,6 +73,7 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         text: e.target.elements.text.value,
         completed: false,
     });
+    localStorage.setItem('todos', JSON.stringify(todos));
     renderTodos(todos, filters);
     e.target.elements.text.value =''
 });
@@ -123,3 +115,20 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
 //     }
 //
 // });
+//
+// const todos = [{
+//     text: 'Walk the Dog',
+//     completed: false,
+// }, {
+//     text: 'Buy food',
+//     completed: false
+// }, {
+//     text: 'Watch TV',
+//     completed: true,
+// }, {
+//     text: 'Hug Wife',
+//     completed: true,
+// }, {
+//     text: 'Call Dad',
+//     completed: true,
+// }];
